@@ -1,0 +1,12 @@
+--- db.c-3.0	2016-06-28 11:07:41.511684072 +0200
++++ db.c	2016-06-28 09:57:37.112815667 +0200
+@@ -860,9 +860,7 @@
+ 	int ret;
+ 
+ 	if (mode == DBM_INSERT) {
+-		if (flatfile_findkey(dbf, datum)) {
+ 			return 1;
+-		}
+ 		fseek(dbf,0L,SEEK_END);
+ 		fprintf(dbf,"%d\n",key_datum.dsize);
+ 		fflush(dbf);
