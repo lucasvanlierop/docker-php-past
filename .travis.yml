@@ -9,11 +9,11 @@ script:
   - make test
 
 after_failure:
-  - docker logs lucasvanlierop/docker-php-past
+  - docker logs lucasvanlierop/php-past
 
 after_success:
   - docker login --email=$DOCKER_EMAIL --username=$DOCKER_USERNAME --password=$DOCKER_PASSWORD
-  - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then docker push lucasvanlierop/docker-php-past; fi
+  - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then docker push lucasvanlierop/php-past; fi
 
 branches:
   only:
