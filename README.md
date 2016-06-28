@@ -1,2 +1,2 @@
-# docker-php3
-PHP 3 in Docker
+# docker-php-past
+Older PHP versions in Docker
