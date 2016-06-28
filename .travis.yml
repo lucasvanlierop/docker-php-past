@@ -1,0 +1,20 @@
+services:
+  - docker
+
+before_script:
+  # Ancient make binary at TravisCI doesn't support indentation with spaces
+  - unexpand -t 4 Makefile > Makefile.tmp && mv Makefile.tmp Makefile
+
+script:
+  - make test
+
+after_failure:
+  - docker logs lucasvanlierop/docker-php-past
+
+after_success:
+  - docker login --email=$DOCKER_EMAIL --username=$DOCKER_USERNAME --password=$DOCKER_PASSWORD
+  - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then docker push docker-php-past; fi
+
+branches:
+  only:
+    - master

@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+CONTAINER_NAME=$1
+CONTAINER_TAG=$2
+EXPECTED_OUTPUT="3.0"
+TEST_OUTPUT=`docker run --rm --name ${CONTAINER_NAME} -t ${CONTAINER_TAG} | tr -d '[[:space:]]'`;
+
+## Assert version response
+if [ "${EXPECTED_OUTPUT}" != "${TEST_OUTPUT}" ]
+then
+    echo "Failed asserting that '${TEST_OUTPUT}' equals '${EXPECTED_OUTPUT}'" && exit 1;
+fi
