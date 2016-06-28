@@ -13,7 +13,7 @@ after_failure:
 
 after_success:
   - docker login --email=$DOCKER_EMAIL --username=$DOCKER_USERNAME --password=$DOCKER_PASSWORD
-  - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then docker push docker-php-past; fi
+  - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then docker push lucasvanlierop/docker-php-past; fi
 
 branches:
   only:
